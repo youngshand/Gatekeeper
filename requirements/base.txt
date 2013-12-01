@@ -1,0 +1,7 @@
+Django==1.5.1
+bpython==0.12
+South==0.7.6
+ipdb
+psycopg2
+logging
+sleekxmpp
