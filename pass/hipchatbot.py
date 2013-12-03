@@ -58,7 +58,7 @@ class HipChatBot(ClientXMPP):
             elif str.lower(args[0]) == 'find':
                 
                 for account in accounts:
-                    if account['name'].lower() == str.lower(" ".join(args[1:])):
+                    if account['name'].lower() == str.lower(msg['body'][5:]):
                         # You will need to decrypt the in here password here.
                         messages.append('Username: %s\nPassword: %s\nURL: %s' % (account['username'], account['password'], account['url']))
 
