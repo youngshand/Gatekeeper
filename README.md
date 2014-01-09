@@ -1,4 +1,4 @@
-Pass Word
+Gate Keeper
 =========
 
 HipChat Based Password Management System
