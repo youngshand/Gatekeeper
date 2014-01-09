@@ -1,4 +1,4 @@
-Gate Keeper
+Gatekeeper
 =========
 
 HipChat Based Password Management System
@@ -15,11 +15,7 @@ Irresponsible use of this system will result in bad times.
 First, you'll need to create a database for the app using your favourite SQL
 varient.
 
-I found to get this working without having to drop tables, its best to rename
-the models.py before running `./manage.py syncdb`.
+It would be a good idea to have this run through supervisor or some other
+process management software.
 
-Revert the name of models.py and then run `./manage.py schemamigration pass --inital`
-followed by `./manage.py migrate`
-
-Now, you can set up gunicorn (or any other gateway server) or just run
-`./manage.py runserver 0.0.0.0:8888` *shudder*
+The most basic way to run the bot is just `./hipchatbot.py`

@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 import logging
 from sleekxmpp import ClientXMPP
 import psycopg2
@@ -41,7 +43,6 @@ class HipChatBot(ClientXMPP):
                 'metadata': account[5],
                 })
 
-
         if msg['type'] in ('chat', 'normal'):
 
             from_addr = repr(msg['from']).split("/")[0]
@@ -58,8 +59,6 @@ class HipChatBot(ClientXMPP):
                             found = False
                     if found:
                         messages.append('Name: %s\nURL: %s' % (account['name'], account['url']))
-
-                
 
             elif str.lower(args[0]) in ['find', 'f']:
                 
@@ -120,5 +119,5 @@ if __name__ == '__main__':
                         format='%(levelname)-8s %(message)s')
 
     xmpp = HipChatBot('<bot_jid>', '<bot_password>')
-    xmpp.connect(('chat.hipchat.com', 5222))
+    xmpp.connect(('chat.hipchat.com', 5222)) # This can be any xmpp service.
     xmpp.process(block=True)
