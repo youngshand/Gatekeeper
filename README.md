@@ -19,3 +19,8 @@ It would be a good idea to have this run through supervisor or some other
 process management software.
 
 The most basic way to run the bot is just `./hipchatbot.py`
+
+I have included a fabfile for deployment utility, at the moment it works using
+supervisor to manage the app but this can be adapted to use any system you like.
+
+

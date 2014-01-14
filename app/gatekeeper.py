@@ -76,7 +76,7 @@ class Gatekeeper(ClientXMPP):
             elif str.lower(args[0]) in ['delete', 'd']:
                 name = " ".join(args[1:])
 
-                if from_addr in ['<List of authorized accounts to use this feature, e.g.: 12345_678910@chat.hipchat.com']:
+                if from_addr in ['<list of jids for authorized accounts to use this feature, e.g.: 12345_678910@chat.hipchat.com']:
 
                     # The name=%s AND name=%s is there due to a bug in the psycopg2 module
                     cursor.execute("DELETE FROM pass_accounts WHERE name=%s AND name=%s;", (name, name))
