@@ -55,7 +55,6 @@ def create_supervisor_config():
 	return SUPERVISOR_CONFIG.format(account_name = account_name, number_of_processes = number_of_processes)
 
 
-
 SUPERVISOR_CONFIG = """\
 [program:{account_name}]
 command=bash {account_name}.bash
