@@ -63,10 +63,9 @@ class Gatekeeper(ClientXMPP):
 
                 name = " ".join(args[1:])
 
-                # The name=%s AND name=%s is there due to a bug in the psycopg2 module
-                query = "SELECT * FROM pass_accounts WHERE name=%s AND name=%s;"
+                query = "SELECT * FROM pass_accounts WHERE name=%s;"
 
-                cursor.execute(query, (name, name))
+                cursor.execute(query, (name,))
 
                 results = cursor.fetchall()
 
@@ -78,8 +77,9 @@ class Gatekeeper(ClientXMPP):
 
                 if from_addr in ['<list of jids for authorized accounts to use this feature, e.g.: 12345_678910@chat.hipchat.com']:
 
-                    # The name=%s AND name=%s is there due to a bug in the psycopg2 module
-                    cursor.execute("DELETE FROM pass_accounts WHERE name=%s AND name=%s;", (name, name))
+                    query = "DELETE FROM pass_accounts WHERE name=%s;"
+
+                    cursor.execute(query, (name,))
                     db.commit()
 
                     messages.append('Deleted %s from database.' % name)
@@ -101,10 +101,9 @@ class Gatekeeper(ClientXMPP):
                     if detail in account.keys():
                         account[detail] = data.strip()
 
-                # The name=%s AND name=%s is there due to a bug in the psycopg2 module
-                query = "SELECT 1 FROM pass_accounts WHERE name=%s AND name=%s;"
+                query = "SELECT 1 FROM pass_accounts WHERE name=%s;"
 
-                cursor.execute(query, (account['name'], account['name']))
+                cursor.execute(query, (account['name'],))
 
                 results = cursor.fetchall()
 
